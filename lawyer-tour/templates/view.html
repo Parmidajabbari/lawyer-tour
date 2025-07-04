@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>360° Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.css" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    #viewer {
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <div id="viewer"></div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
+        "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import { Viewer } from '@photo-sphere-viewer/core';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const imageId = urlParams.get("id");
+    const imageUrl = "/file/" + imageId + ".jpg";
+
+    const viewer = new Viewer({
+      container: document.getElementById('viewer'),
+      panorama: imageUrl,
+      navbar: ['zoom', 'fullscreen', 'autorotate'],
+      defaultYaw: '90deg',
+    });
+  </script>
+</body>
+</html>
