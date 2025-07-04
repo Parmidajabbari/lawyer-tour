@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: lawyer-tour
-    env: python
-    buildCommand: ""
-    startCommand: "python app.py"
