@@ -22,10 +22,19 @@
 <body>
   <div id="viewer"></div>
 
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
+        "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js",
+        "@photo-sphere-viewer/keyboard-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/keyboard-plugin/dist/index.module.js"
+      }
+    }
+  </script>
+
   <script type="module">
-    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.module.js';
-    import { Viewer } from 'https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5.3.3/dist/index.module.js';
-    import { KeyboardPlugin } from 'https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/keyboard-plugin@5.3.3/dist/index.module.js';
+    import { Viewer } from '@photo-sphere-viewer/core';
+    import { KeyboardPlugin } from '@photo-sphere-viewer/keyboard-plugin';
 
     const urlParams = new URLSearchParams(window.location.search);
     const imageId = urlParams.get("id");
@@ -37,8 +46,7 @@
       navbar: ['zoom', 'fullscreen', 'autorotate'],
       plugins: [
         [KeyboardPlugin]
-      ],
-      defaultYaw: '90deg',
+      ]
     });
   </script>
 </body>
