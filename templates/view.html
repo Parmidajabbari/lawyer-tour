@@ -6,11 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.css" />
   <style>
-    html, body {
+    body, html {
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden;
     }
     #viewer {
       width: 100vw;
@@ -23,18 +22,17 @@
   <div id="viewer"></div>
 
   <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
-        "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js",
-        "@photo-sphere-viewer/keyboard-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/keyboard-plugin/dist/index.module.js"
+      {
+          "imports": {
+              "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
+              "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js"
+          }
       }
-    }
   </script>
+
 
   <script type="module">
     import { Viewer } from '@photo-sphere-viewer/core';
-    import { KeyboardPlugin } from '@photo-sphere-viewer/keyboard-plugin';
 
     const urlParams = new URLSearchParams(window.location.search);
     const imageId = urlParams.get("id");
@@ -43,10 +41,6 @@
     const viewer = new Viewer({
       container: document.getElementById('viewer'),
       panorama: imageUrl,
-      navbar: ['zoom', 'fullscreen', 'autorotate'],
-      plugins: [
-        [KeyboardPlugin]
-      ]
     });
   </script>
 </body>
